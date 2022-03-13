@@ -10,9 +10,9 @@ import { ProfileComponent } from './layout/profile/profile.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: '/login', component: SocialComponent},
-  {path: '/home', component: HomeComponent},
-  {path: '/profile', component: ProfileComponent},
+  {path: 'login', component: SocialComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'profile', component: ProfileComponent},
   {path: '**', redirectTo: '/home' }
 ];
 
@@ -25,6 +25,7 @@ const routes: Routes = [
     ProfileComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     RouterModule
   ],
