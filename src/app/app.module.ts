@@ -21,7 +21,6 @@ const routes: Routes = [
     HeaderComponent,
     SocialComponent,
     HomeComponent,
-    HomeprofileComponent,
     ProfileComponent
   ],
   imports: [
