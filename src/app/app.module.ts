@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
+import {Routes} from "@angular/router";
+
+const routes: Routes = [
+
+];
 
 @NgModule({
   declarations: [
