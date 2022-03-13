@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
-import {Routes} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import { SocialComponent } from './layout/social/social.component';
 import { HomeComponent } from './layout/home/home.component';
 import { ProfileComponent } from './layout/profile/profile.component';
@@ -24,7 +24,8 @@ const routes: Routes = [
     ProfileComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
