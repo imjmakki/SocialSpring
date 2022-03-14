@@ -28,4 +28,8 @@ export class SocialComponent implements OnInit {
       }
     );
   }
+
+  signOut(): void {
+    this.authService.signOut();
+  }
 }
