@@ -1,6 +1,7 @@
 package app.social.spring.API;
 
 import app.social.spring.Entity.Student;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,7 @@ public class StudentResource {
         students.add(new Student(3L, "Hassan A Hummadi", "23"));
     }
 
+    @GetMapping("/all")
     public List<Student> getStudents() {
         return students;
     }
