@@ -9,12 +9,15 @@ import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUse
 export class SocialComponent implements OnInit {
 
   user: SocialUser;
+  isLogin: boolean;
   constructor(private authService: SocialAuthService) { }
 
   ngOnInit(): void {
     this.authService.authState.subscribe(
-
-    )
+      data => {
+        this.isLogin = (data != null);
+      }
+    );
   }
 
   signInWithGoogle(): void {
