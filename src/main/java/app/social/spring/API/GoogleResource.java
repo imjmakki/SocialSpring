@@ -30,5 +30,6 @@ public class GoogleResource {
                 new GoogleIdTokenVerifier.Builder(transport, factory)
                         .setAudience(Collections.singleton(IdClient));
         GoogleIdToken googleIdToken = GoogleIdToken.parse(ver.getJsonFactory(), tokenDTO.getToken());
+        GoogleIdToken.Payload payload = googleIdToken.getPayload();
     }
 }
