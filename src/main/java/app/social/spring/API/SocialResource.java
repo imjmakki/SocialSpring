@@ -7,6 +7,9 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.User;
+import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -36,5 +39,8 @@ public class SocialResource {
 
     @PostMapping("/facebook")
     public ResponseEntity<?> loginWithFacebook(@RequestBody TokenDTO tokenDTO) {
+        Facebook facebook = new FacebookTemplate(tokenDTO.getToken());
+        User user = facebook.fetchObject("fb_social", User.class);
+        return new ResponseEntity<>(user, OK);
     }
 }
