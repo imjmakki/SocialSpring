@@ -40,7 +40,8 @@ public class SocialResource {
     @PostMapping("/facebook")
     public ResponseEntity<?> loginWithFacebook(@RequestBody TokenDTO tokenDTO) {
         Facebook facebook = new FacebookTemplate(tokenDTO.getToken());
-        User user = facebook.fetchObject("me", User.class);
+        String[] data = { "email", "name", "photoUrl" };
+        User user = facebook.fetchObject("me", User.class, data);
         return new ResponseEntity<>(user, OK);
     }
 }
