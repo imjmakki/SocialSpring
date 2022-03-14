@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SocialAuthService} from "angularx-social-login";
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService} from "angularx-social-login";
 
 @Component({
   selector: 'app-social',
@@ -13,4 +13,11 @@ export class SocialComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
 }
