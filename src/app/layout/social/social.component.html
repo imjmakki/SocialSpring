@@ -1,9 +1,9 @@
-<button *ngIf="isLogin" type="button" class="btn btn-primary soc" (click)="signInWithFB()">
+<button *ngIf="!isLogin" type="button" class="btn btn-primary soc" (click)="signInWithFB()">
   Facebook
 </button>
-<button *ngIf="isLogin" type="button" class="btn btn-success soc" (click)="signInWithGoogle()">
+<button *ngIf="!isLogin" type="button" class="btn btn-success soc" (click)="signInWithGoogle()">
   Gmail
 </button>
-<button type="button" class="btn btn-danger soc" (click)="signOut()">
+<button *ngIf="isLogin" type="button" class="btn btn-danger soc" (click)="signOut()">
   Log Out
 </button>
