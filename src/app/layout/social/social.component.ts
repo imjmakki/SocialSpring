@@ -24,6 +24,7 @@ export class SocialComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       data => {
         this.user = data;
+        console.log(data);
       }
     );
   }
@@ -32,6 +33,7 @@ export class SocialComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
         this.user = data;
+        console.log(data);
       }
     );
   }
