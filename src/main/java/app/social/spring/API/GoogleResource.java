@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
@@ -22,6 +24,8 @@ public class GoogleResource {
     public ResponseEntity<?> loginWithGoogle(@RequestBody TokenDTO tokenDTO) {
         NetHttpTransport transport = new NetHttpTransport();
         JacksonFactory factory = new JacksonFactory();
-        GoogleIdTokenVerifier.Builder ver = new GoogleIdTokenVerifier.Builder(transport, factory);
+        GoogleIdTokenVerifier.Builder ver =
+                new GoogleIdTokenVerifier.Builder(transport, factory)
+                        .setAudience(Collections.singleton(IdClient));
     }
 }
