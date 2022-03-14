@@ -10,19 +10,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "roles")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class User implements Serializable {
+public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    private String email;
-    private String password;
+    private String roleName;
 
     @ManyToMany
-    private Set<Role> roles = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 }
