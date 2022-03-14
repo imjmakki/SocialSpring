@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SocialAuthService} from "angularx-social-login";
 
 @Component({
   selector: 'app-social',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocialComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: SocialAuthService) { }
 
   ngOnInit(): void {
   }
