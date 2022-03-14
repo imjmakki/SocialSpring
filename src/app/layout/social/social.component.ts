@@ -8,8 +8,8 @@ import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUse
 })
 export class SocialComponent implements OnInit {
 
-  user: SocialUser;
-  isLogin: boolean;
+  user: SocialUser = new SocialUser;
+  isLogin: boolean = false;
   constructor(private authService: SocialAuthService) { }
 
   ngOnInit(): void {
