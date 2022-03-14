@@ -2,6 +2,7 @@ package app.social.spring.Service;
 
 import app.social.spring.DAO.UserDAO;
 import app.social.spring.Entity.User;
+import app.social.spring.Utility.Config.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,7 @@ public class UserService {
 
     public UserDetails loadByEmail(String email ) {
         User user = userDAO.findByEmail(email);
+        UserPrincipal userPrincipal = new UserPrincipal(user);
+        return userPrincipal;
     }
 }
