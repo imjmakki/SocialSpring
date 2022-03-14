@@ -17,7 +17,7 @@ import static org.springframework.http.HttpStatus.*;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
-public class GoogleResource {
+public class SocialResource {
 
     @Value("${google.id}")
     private String IdClient;
@@ -32,5 +32,9 @@ public class GoogleResource {
         GoogleIdToken googleIdToken = GoogleIdToken.parse(ver.getJsonFactory(), tokenDTO.getToken());
         GoogleIdToken.Payload payload = googleIdToken.getPayload();
         return new ResponseEntity<>(payload, OK);
+    }
+
+    @PostMapping("/facebook")
+    public ResponseEntity<?> loginWithFacebook(@RequestBody TokenDTO tokenDTO) {
     }
 }
