@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.Collections;
 
+import static org.springframework.http.HttpStatus.*;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
@@ -31,5 +33,6 @@ public class GoogleResource {
                         .setAudience(Collections.singleton(IdClient));
         GoogleIdToken googleIdToken = GoogleIdToken.parse(ver.getJsonFactory(), tokenDTO.getToken());
         GoogleIdToken.Payload payload = googleIdToken.getPayload();
+        return new ResponseEntity<>(payload, OK);
     }
 }
