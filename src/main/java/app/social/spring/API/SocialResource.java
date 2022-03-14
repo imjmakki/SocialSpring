@@ -18,7 +18,7 @@ import java.util.Collections;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/social")
 @CrossOrigin(origins = "*")
 public class SocialResource {
 
