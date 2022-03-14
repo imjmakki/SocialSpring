@@ -16,7 +16,7 @@ export class SocialComponent implements OnInit {
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       data => {
-
+        console.log(data);
       }
     );
   }
