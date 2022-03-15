@@ -1,6 +1,7 @@
 package app.social.spring.API;
 
 import app.social.spring.DTO.TokenDTO;
+import app.social.spring.Entity.Role;
 import app.social.spring.Entity.User;
 import app.social.spring.Service.RoleService;
 import app.social.spring.Service.UserService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -63,6 +65,8 @@ public class SocialResource {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
+        List<Role> roles = roleService.getRoles();
+        user.getRoles().add(roles.get(0));
     }
 
     @PostMapping("/facebook")
