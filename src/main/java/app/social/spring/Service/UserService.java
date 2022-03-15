@@ -33,4 +33,8 @@ public class UserService implements UserDetailsService {
     public User getUserByMail(String email) {
         return userDAO.findByEmail(email);
     }
+
+    public User saveUser(User user) {
+        return userDAO.save(user);
+    }
 }
