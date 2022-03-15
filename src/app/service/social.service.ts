@@ -14,6 +14,7 @@ export class SocialService {
     return this.http.post(`${this.baseUrl}google`, {token}).pipe(
       map(
         response => {
+          sessionStorage.setItem('token', "Bearer "+response.toString());
           return response;
         }
       )
@@ -24,6 +25,7 @@ export class SocialService {
     return this.http.post(`${this.baseUrl}facebook`, {token}).pipe(
       map(
         response => {
+          sessionStorage.setItem('token', "Bearer "+response.toString());
           return response;
         }
       )
