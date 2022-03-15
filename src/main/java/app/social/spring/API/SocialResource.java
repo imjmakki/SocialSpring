@@ -2,6 +2,7 @@ package app.social.spring.API;
 
 import app.social.spring.DTO.TokenDTO;
 import app.social.spring.Entity.User;
+import app.social.spring.Service.RoleService;
 import app.social.spring.Service.UserService;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -25,6 +26,7 @@ import static org.springframework.http.HttpStatus.*;
 public class SocialResource {
 
     private UserService userService;
+    private RoleService roleService;
 
     @Value("${google.id}")
     private String IdClient;
@@ -33,8 +35,9 @@ public class SocialResource {
     private String password;
 
     @Autowired
-    public SocialResource(UserService userService) {
+    public SocialResource(UserService userService, RoleService roleService) {
         this.userService = userService;
+        this.roleService = roleService;
     }
 
     @PostMapping("/google")
