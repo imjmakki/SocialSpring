@@ -85,7 +85,7 @@ public class SocialResource {
     }
 
     @PostMapping("/facebook")
-    public ResponseEntity<?> loginWithFacebook(@RequestBody TokenDTO tokenDTO) {
+    public ResponseEntity<LoginResponse> loginWithFacebook(@RequestBody TokenDTO tokenDTO) throws Exception {
         Facebook facebook = new FacebookTemplate(tokenDTO.getToken());
         String[] data = { "email", "name", "picture" };
         //importing facebook user instead of entity
