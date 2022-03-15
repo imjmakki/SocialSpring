@@ -1,6 +1,7 @@
 package app.social.spring.API;
 
 import app.social.spring.DTO.JwtLogin;
+import app.social.spring.DTO.LoginResponse;
 import app.social.spring.DTO.TokenDTO;
 import app.social.spring.Entity.Role;
 import app.social.spring.Entity.User;
@@ -18,7 +19,6 @@ import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class SocialResource {
     }
 
     @PostMapping("/google")
-    public ResponseEntity<?> loginWithGoogle(@RequestBody TokenDTO tokenDTO) throws Exception {
+    public ResponseEntity<LoginResponse> loginWithGoogle(@RequestBody TokenDTO tokenDTO) throws Exception {
         NetHttpTransport transport = new NetHttpTransport();
         JacksonFactory factory = new JacksonFactory();
         GoogleIdTokenVerifier.Builder ver =
@@ -66,9 +66,8 @@ public class SocialResource {
         JwtLogin jwtLogin = new JwtLogin();
         jwtLogin.setEmail(user.getEmail());
         jwtLogin.setPassword(password);
-        tokenService.login(jwtLogin);
 
-        return new ResponseEntity<>(payload, OK);
+        return new ResponseEntity<LoginResponse>(tokenService.login(jwtLogin), OK);
     }
 
     private User createUser(String email) {
