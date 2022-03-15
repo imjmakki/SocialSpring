@@ -29,6 +29,9 @@ public class SocialResource {
     @Value("${google.id}")
     private String IdClient;
 
+    @Value("${secret.password}")
+    private String password;
+
     @Autowired
     public SocialResource(UserService userService) {
         this.userService = userService;
@@ -56,6 +59,7 @@ public class SocialResource {
     private void createUser(String email) {
         User user = new User();
         user.setEmail(email);
+        user.setPassword(password);
     }
 
     @PostMapping("/facebook")
