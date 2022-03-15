@@ -61,12 +61,13 @@ public class SocialResource {
         return new ResponseEntity<>(payload, OK);
     }
 
-    private void createUser(String email) {
+    private User createUser(String email) {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
         List<Role> roles = roleService.getRoles();
         user.getRoles().add(roles.get(0));
+        return userService.saveUser(user);
     }
 
     @PostMapping("/facebook")
