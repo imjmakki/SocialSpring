@@ -38,8 +38,8 @@ export class SocialComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
         this.social.loginWithFacebook(data.idToken).subscribe(
-          data => {
-            console.log(data);
+          res => {
+            console.log(res);
           }
         )
       }
