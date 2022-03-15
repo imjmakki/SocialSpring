@@ -28,8 +28,8 @@ public class Runner implements CommandLineRunner {
         userDAO.save(user);
 
         User user1 = new User();
-        user.setEmail("test1@test.com");
-        user.setPassword(passwordEncoder.encode("1234abcd"));
+        user1.setEmail("test1@test.com");
+        user1.setPassword(passwordEncoder.encode("1234abcd"));
         userDAO.save(user1);
     }
 }
