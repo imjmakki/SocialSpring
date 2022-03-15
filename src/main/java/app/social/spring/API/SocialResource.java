@@ -46,7 +46,7 @@ public class SocialResource {
 
         User user = new User();
         if(userService.ifEmailExist(payload.getEmail())) {
-
+            user = userService.getUserByMail(payload.getEmail());
         } else {
 
         }

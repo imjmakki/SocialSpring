@@ -30,7 +30,7 @@ public class UserService implements UserDetailsService {
         return userDAO.existsByEmail(email);
     }
 
-    public User getUserByEmail(String email) {
+    public User getUserByMail(String email) {
         return userDAO.findByEmail(email);
     }
 }
