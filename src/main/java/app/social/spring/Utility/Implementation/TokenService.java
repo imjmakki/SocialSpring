@@ -1,5 +1,6 @@
 package app.social.spring.Utility.Implementation;
 
+import app.social.spring.DTO.JwtLogin;
 import app.social.spring.Utility.Config.UserPrincipal;
 import app.social.spring.Utility.JWT.JwtProperties;
 import com.auth0.jwt.JWT;
