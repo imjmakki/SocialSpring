@@ -47,7 +47,7 @@ public class SocialResource {
     }
 
     @PostMapping("/google")
-    public ResponseEntity<?> loginWithGoogle(@RequestBody TokenDTO tokenDTO) throws IOException {
+    public ResponseEntity<?> loginWithGoogle(@RequestBody TokenDTO tokenDTO) throws Exception {
         NetHttpTransport transport = new NetHttpTransport();
         JacksonFactory factory = new JacksonFactory();
         GoogleIdTokenVerifier.Builder ver =
@@ -66,6 +66,7 @@ public class SocialResource {
         JwtLogin jwtLogin = new JwtLogin();
         jwtLogin.setEmail(user.getEmail());
         jwtLogin.setPassword(password);
+        tokenService.login(jwtLogin);
 
         return new ResponseEntity<>(payload, OK);
     }
