@@ -26,13 +26,13 @@ public class SocialResource {
 
     private UserService userService;
 
+    @Value("${google.id}")
+    private String IdClient;
+
     @Autowired
     public SocialResource(UserService userService) {
         this.userService = userService;
     }
-
-    @Value("${google.id}")
-    private String IdClient;
 
     @PostMapping("/google")
     public ResponseEntity<?> loginWithGoogle(@RequestBody TokenDTO tokenDTO) throws IOException {
@@ -54,6 +54,8 @@ public class SocialResource {
     }
 
     private void createUser(String email) {
+        User user = new User();
+        user.setEmail(email);
     }
 
     @PostMapping("/facebook")
