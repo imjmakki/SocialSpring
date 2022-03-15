@@ -13,6 +13,7 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule
 } from "angularx-social-login";
+import {HttpClientModule} from "@angular/common/http";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     RouterModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClientModule
   ],
   providers: [
     {
