@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilter(new JwtAuthorizationFilter())
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), userDAO))
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
