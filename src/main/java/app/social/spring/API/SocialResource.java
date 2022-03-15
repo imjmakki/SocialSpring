@@ -1,6 +1,7 @@
 package app.social.spring.API;
 
 import app.social.spring.DTO.TokenDTO;
+import app.social.spring.Entity.User;
 import app.social.spring.Service.UserService;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.api.User;
 import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +43,8 @@ public class SocialResource {
                         .setAudience(Collections.singleton(IdClient));
         GoogleIdToken googleIdToken = GoogleIdToken.parse(ver.getJsonFactory(), tokenDTO.getToken());
         GoogleIdToken.Payload payload = googleIdToken.getPayload();
+
+        User user = new User();
         if(userService.ifEmailExist(payload.getEmail())) {
 
         } else {

@@ -29,4 +29,8 @@ public class UserService implements UserDetailsService {
     public boolean ifEmailExist(String email) {
         return userDAO.existsByEmail(email);
     }
+
+    public User getUserByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
 }
