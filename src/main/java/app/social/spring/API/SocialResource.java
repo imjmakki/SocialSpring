@@ -15,6 +15,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,7 @@ public class SocialResource {
     private UserService userService;
     private RoleService roleService;
     private TokenService tokenService;
+    private PasswordEncoder passwordEncoder;
 
     @Value("${google.id}")
     private String IdClient;
@@ -40,10 +42,11 @@ public class SocialResource {
     private String password;
 
     @Autowired
-    public SocialResource(UserService userService, RoleService roleService, TokenService tokenService) {
+    public SocialResource(UserService userService, RoleService roleService, TokenService tokenService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.roleService = roleService;
         this.tokenService = tokenService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/google")
