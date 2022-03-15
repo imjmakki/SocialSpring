@@ -10,7 +10,8 @@ export class SocialComponent implements OnInit {
 
   user: SocialUser = new SocialUser;
   isLogin: boolean = false;
-  constructor(private authService: SocialAuthService) { }
+  constructor(private authService: SocialAuthService,
+              private social: SocialAuthService) { }
 
   ngOnInit(): void {
     this.authService.authState.subscribe(
@@ -20,17 +21,16 @@ export class SocialComponent implements OnInit {
     );
   }
 
-  getTokenGoogle():string {
-
+  getTokenGoogle(){
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      data => {
+        return data.idToken;
+      }
+    );
   }
 
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
-      data => {
-        this.user = data;
-        console.log(data);
-      }
-    );
+    this.getTokenGoogle();
   }
 
   signInWithFB(): void {
