@@ -88,6 +88,7 @@ public class SocialResource {
     public ResponseEntity<?> loginWithFacebook(@RequestBody TokenDTO tokenDTO) {
         Facebook facebook = new FacebookTemplate(tokenDTO.getToken());
         String[] data = { "email", "name", "picture" };
+        //importing facebook user instead of entity
         org.springframework.social.facebook.api.User user = facebook.fetchObject("me", org.springframework.social.facebook.api.User.class, data);
         return new ResponseEntity<>(user, OK);
     }
