@@ -69,6 +69,8 @@ public class SocialResource {
         JwtLogin jwtLogin = new JwtLogin();
         jwtLogin.setEmail(user.getEmail());
         jwtLogin.setPassword(user.getPassword());
+        //use this if you already have a password
+        //jwtLogin.setPassword(password);
 
         return new ResponseEntity<LoginResponse>(tokenService.login(jwtLogin), OK);
     }
