@@ -22,20 +22,16 @@ export class SocialComponent implements OnInit {
     );
   }
 
-  getTokenGoogle(){
+  signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       data => {
-        return data.idToken;
+        this.social.loginWithGoogle(data.idToken).subscribe(
+          res => {
+            console.log(res);
+          }
+        );
       }
     );
-  }
-
-  signInWithGoogle(): void {
-    this.social.loginWithGoogle(this.getTokenGoogle()).subscribe(
-      data => {
-        console.log(data);
-      }
-    )
   }
 
   signInWithFB(): void {
