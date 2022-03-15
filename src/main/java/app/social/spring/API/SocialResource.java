@@ -76,7 +76,7 @@ public class SocialResource {
     private User createUser(String email) {
         User user = new User();
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
         List<Role> roles = roleService.getRoles();
         user.getRoles().add(roles.get(0));
         return userService.saveUser(user);
