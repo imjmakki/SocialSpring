@@ -31,7 +31,11 @@ export class SocialComponent implements OnInit {
   }
 
   signInWithGoogle(): void {
-    this.getTokenGoogle();
+    this.social.loginWithGoogle(this.getTokenGoogle()).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
   }
 
   signInWithFB(): void {
