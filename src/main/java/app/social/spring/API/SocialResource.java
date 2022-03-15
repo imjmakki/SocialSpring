@@ -1,5 +1,6 @@
 package app.social.spring.API;
 
+import app.social.spring.DTO.JwtLogin;
 import app.social.spring.DTO.TokenDTO;
 import app.social.spring.Entity.Role;
 import app.social.spring.Entity.User;
@@ -61,6 +62,11 @@ public class SocialResource {
         } else {
             user = createUser(email);
         }
+
+        JwtLogin jwtLogin = new JwtLogin();
+        jwtLogin.setEmail(user.getEmail());
+        jwtLogin.setPassword(password);
+
         return new ResponseEntity<>(payload, OK);
     }
 
