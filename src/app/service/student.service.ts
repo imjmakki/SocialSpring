@@ -13,7 +13,7 @@ export class StudentService {
   getStudents(): Observable<Student[]>{
     // @ts-ignore
     let head= new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
-    return this.http.get<Student[]>("http://localhost:8080/api/students",{headers: head}).pipe(
+    return this.http.get<Student[]>("http://localhost:8080/student/all",{headers: head}).pipe(
       map(
         response => {
           return response;
