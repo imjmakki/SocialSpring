@@ -23,7 +23,7 @@ public class User implements Serializable {
     private String email;
     private String password;
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+    @ManyToMany
     @JoinTable(
             name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id")},
