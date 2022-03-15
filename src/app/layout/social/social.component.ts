@@ -41,7 +41,7 @@ export class SocialComponent implements OnInit {
           res => {
             console.log(res);
           }
-        )
+        );
       }
     );
   }
