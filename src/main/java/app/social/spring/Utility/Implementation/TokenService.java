@@ -41,6 +41,6 @@ public class TokenService {
                 jwtLogin.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authenticate);
         String token = generateToken(authenticate);
-        return new LoginResponse(jwtLogin.getEmail(), token);
+        return new LoginResponse(token);
     }
 }
