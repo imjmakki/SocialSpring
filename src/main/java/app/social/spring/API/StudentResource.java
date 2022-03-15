@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +17,12 @@ public class StudentResource {
 
     private List<Student> students = new ArrayList<>();
 
-//    @PostConstruct
-//    public void init() {
-//        students.add(new Student(1L, "Mohamad J Makki", "120"));
-//        students.add(new Student(2L, "Nabeel D Hussein", "20"));
-//        students.add(new Student(3L, "Hassan A Hummadi", "23"));
-//    }
+    @PostConstruct
+    public void init() {
+        students.add(new Student(1L, "Mohamad J Makki", "120"));
+        students.add(new Student(2L, "Nabeel D Hussein", "20"));
+        students.add(new Student(3L, "Hassan A Hummadi", "23"));
+    }
 
     @GetMapping("/all")
     public List<Student> getStudents() {
