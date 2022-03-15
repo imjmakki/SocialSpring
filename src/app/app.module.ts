@@ -14,6 +14,7 @@ import {
   SocialLoginModule
 } from "angularx-social-login";
 import {HttpClientModule} from "@angular/common/http";
+import { StudentComponent } from './layout/student/student.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
     HeaderComponent,
     SocialComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    StudentComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
