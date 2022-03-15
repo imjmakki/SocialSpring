@@ -18,14 +18,15 @@ public class StudentResource {
     private List<Student> students = new ArrayList<>();
 
     @PostConstruct
-    public void init() {
-        students.add(new Student(1L, "Mohamad J Makki", "120"));
-        students.add(new Student(2L, "Nabeel D Hussein", "20"));
-        students.add(new Student(3L, "Hassan A Hummadi", "23"));
+    public void init(){
+        students.add(new Student(1L,"Nabeel","10"));
+        students.add(new Student(1L,"MJ","20"));
+        students.add(new Student(1L,"Hassan","15"));
+        students.add(new Student(1L,"Ali","17"));
+        students.add(new Student(1L,"Saif","25"));
     }
-
     @GetMapping("/all")
-    public List<Student> getStudents() {
+    public List<Student> getAllStudents(){
         return students;
     }
 }
