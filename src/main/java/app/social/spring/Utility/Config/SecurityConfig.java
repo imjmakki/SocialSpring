@@ -1,13 +1,14 @@
 package app.social.spring.Utility.Config;
 
+import app.social.spring.DAO.UserDAO;
 import app.social.spring.Service.UserService;
+import app.social.spring.Utility.JWT.JwtAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.BeanIds;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -17,10 +18,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private UserDAO userDAO;
     private UserService userService;
 
     @Autowired
-    public SecurityConfig(UserService userService) {
+    public SecurityConfig(UserDAO userDAO, UserService userService) {
+        this.userDAO = userDAO;
         this.userService = userService;
     }
 
@@ -36,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .addFilter(new JwtAuthorizationFilter())
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
