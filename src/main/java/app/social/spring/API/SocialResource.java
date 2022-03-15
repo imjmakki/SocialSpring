@@ -56,7 +56,7 @@ public class SocialResource {
         if(userService.ifEmailExist(email)) {
             user = userService.getUserByMail(email);
         } else {
-            createUser(email);
+            user = createUser(email);
         }
         return new ResponseEntity<>(payload, OK);
     }
