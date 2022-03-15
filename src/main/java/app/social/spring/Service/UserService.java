@@ -25,4 +25,8 @@ public class UserService implements UserDetailsService {
         UserPrincipal userPrincipal = new UserPrincipal(user);
         return userPrincipal;
     }
+
+    public boolean ifEmailExist(String email) {
+        return userDAO.existsByEmail(email);
+    }
 }

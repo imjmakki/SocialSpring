@@ -1,10 +1,12 @@
 package app.social.spring.API;
 
 import app.social.spring.DTO.TokenDTO;
+import app.social.spring.Service.UserService;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.social.facebook.api.Facebook;
@@ -21,6 +23,13 @@ import static org.springframework.http.HttpStatus.*;
 @RequestMapping("/social")
 @CrossOrigin(origins = "*")
 public class SocialResource {
+
+    private UserService userService;
+
+    @Autowired
+    public SocialResource(UserService userService) {
+        this.userService = userService;
+    }
 
     @Value("${google.id}")
     private String IdClient;
