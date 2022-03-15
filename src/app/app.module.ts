@@ -20,6 +20,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: SocialComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'student', component: StudentComponent},
   {path: 'profile', component: ProfileComponent},
   {path: '**', redirectTo: '/home' }
 ];
