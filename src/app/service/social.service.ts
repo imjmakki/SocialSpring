@@ -11,7 +11,7 @@ export class SocialService {
   constructor(private http: HttpClient) { }
 
   loginWithGoogle(token: any): Observable<any>{
-    return this.http.post(`${this.baseUrl}google`, {token}).pipe(
+    return this.http.post<any>(`${this.baseUrl}google`, {token}).pipe(
       map(
         response => {
           sessionStorage.setItem('token', "Bearer "+response.toString());
