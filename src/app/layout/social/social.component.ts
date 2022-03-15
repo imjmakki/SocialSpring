@@ -20,6 +20,10 @@ export class SocialComponent implements OnInit {
     );
   }
 
+  getTokenGoogle():string {
+
+  }
+
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       data => {
