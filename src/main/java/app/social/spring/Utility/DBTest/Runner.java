@@ -22,12 +22,12 @@ public class Runner implements CommandLineRunner {
 
         User user = new User();
         user.setEmail("test@test.com");
-        user.setPassword("1234abcd");
+        user.setPassword(passwordEncoder.encode("1234abcd"));
         userDAO.save(user);
 
         User user1 = new User();
         user.setEmail("test1@test.com");
-        user.setPassword("1234abcd1");
+        user.setPassword(passwordEncoder.encode("1234abcd"));
         userDAO.save(user1);
     }
 }
