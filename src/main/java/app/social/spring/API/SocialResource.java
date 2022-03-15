@@ -43,10 +43,10 @@ public class SocialResource {
                         .setAudience(Collections.singleton(IdClient));
         GoogleIdToken googleIdToken = GoogleIdToken.parse(ver.getJsonFactory(), tokenDTO.getToken());
         GoogleIdToken.Payload payload = googleIdToken.getPayload();
-
+        String email = payload.getEmail();
         User user = new User();
-        if(userService.ifEmailExist(payload.getEmail())) {
-            user = userService.getUserByMail(payload.getEmail());
+        if(userService.ifEmailExist(email)) {
+            user = userService.getUserByMail(email);
         } else {
 
         }
