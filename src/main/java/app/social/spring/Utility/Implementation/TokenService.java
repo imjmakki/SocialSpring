@@ -36,7 +36,7 @@ public class TokenService {
         return token;
     }
 
-    public LoginResponse login(JwtLogin jwtLogin) {
+    public LoginResponse login(JwtLogin jwtLogin) throws Exception{
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtLogin.getEmail(),
                 jwtLogin.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authenticate);
