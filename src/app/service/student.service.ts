@@ -14,11 +14,9 @@ export class StudentService {
     return this.http.get<Student[]>('http://localhsot:8080/student/all').pipe(
       map(
         response => {
-          sessionStorage.setItem('token', "Bearer "+response.toString());
           return response;
         }
       )
     );
-    return null;
   }
 }
