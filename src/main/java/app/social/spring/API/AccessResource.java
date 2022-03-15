@@ -4,13 +4,11 @@ import app.social.spring.DTO.JwtLogin;
 import app.social.spring.DTO.LoginResponse;
 import app.social.spring.Utility.Implementation.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/access")
+@CrossOrigin(origins = "*")
 public class AccessResource {
 
     private TokenService tokenService;
