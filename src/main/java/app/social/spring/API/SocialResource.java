@@ -90,6 +90,20 @@ public class SocialResource {
         String[] data = { "email", "name", "picture" };
         //importing facebook user instead of entity
         org.springframework.social.facebook.api.User user = facebook.fetchObject("me", org.springframework.social.facebook.api.User.class, data);
-        return new ResponseEntity<>(user, OK);
+        String email = user.getEmail();
+        User faceUser = new User();
+        if(userService.ifEmailExist(email)) {
+            faceUser = userService.getUserByMail(email);
+        } else {
+            faceUser = createUser(email);
+        }
+
+        JwtLogin jwtLogin = new JwtLogin();
+        jwtLogin.setEmail(user.getEmail());
+        //jwtLogin.setPassword(user.getPassword());
+        //use this if you already have a password
+        jwtLogin.setPassword(password);
+
+        return new ResponseEntity<LoginResponse>(tokenService.login(jwtLogin), OK);
     }
 }
