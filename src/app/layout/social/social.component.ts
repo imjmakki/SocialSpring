@@ -37,7 +37,7 @@ export class SocialComponent implements OnInit {
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
-        this.social.loginWithFacebook(data.idToken).subscribe(
+        this.social.loginWithFacebook(data.authToken).subscribe(
           res => {
             console.log(res);
           }
